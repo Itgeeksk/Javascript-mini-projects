@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        body{
+            background: #8990ec;
+        }
+        #Heading{
+            text-align: center;
+        }
+        #clockdiv{
+            padding-left: 300px;
+        }
+        #clock {
+            font-size: 175px;
+            width:1000px;
+            margin: 200px;
+            text-align: center;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="description">
+            <h2 id="Heading">Simple Clock Build</h2>
+            <div id="clockdiv">
+            <h1 class="sub-heading" id="clock">clock</h1>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const showTime = () =>{
+    let time = new Date();
+    let hour = time.getHours();
+    let min = time.getMinutes();
+    let sec = time.getSeconds();
+    am_pm = "AM";
+    if (hour > 12){
+        am_pm ="PM"
+    }else{
+        am_pm = "AM"
+    }
+    hour = hour < 10 ? "0" + hour: hour
+    min = min < 10 ? "0" + min: min
+    sec = sec < 10 ? "0" + sec: sec
+    
+    let currentTime = hour + ":"
+    + min + ":" + sec + am_pm
+    
+    document.getElementById('clock').innerText = currentTime
+        }
+        setInterval(showTime, 1000)
+        showTime();
+    </script>
+</body>
+</html>

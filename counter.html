@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        
+            body{
+                background: skyblue;
+                margin: auto;
+            }
+
+            #wrapper {
+                height:400px auto;
+                width: 600px;
+                background: rgb(175, 126, 62);
+                border-radius: 2rem;
+                padding: 50px;
+                margin: 100px auto;
+            }
+
+            .topContainer{
+                font-size: 1.2rem;
+                color: white;
+                align-items: center;
+            }
+
+            #Heading {
+                background:black;
+                height: 50px auto;
+                width: auto;
+                border-radius: 4rem;
+                text-align: center;
+                align-items: center;
+            }
+
+            #counter{
+                width: 50px;
+                margin-left: 250px;
+                text-align: center;
+                border: 2px solid black;
+                border-radius: 20px;
+            }
+
+            .btns{
+                border-radius: 2rem;
+                width: 150px;
+                height: 100px;
+                justify-content: space-between;
+                background: none;
+                margin-left: 37px;
+            }
+
+            #storing_entries{
+                font-size: 2rem;
+                color: rgb(0, 0, 0);
+            }
+
+            #total_text{
+                text-align: center;
+                font-size: 2rem;
+                justify-content: space-between;
+            }
+
+            #total_count{
+                color:rgb(55, 0, 255);
+            }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="topContainer">
+            <h1 id="Heading">Subway Peoples Counter WebApp</h1>
+            <h1 id="counter">0</h1>
+        </div>
+        <div id="buttons">
+            <button class="btns" id="increment-btn"><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/60/000000/external-up-arrow-arrows-vitaliy-gorbachev-lineal-color-vitaly-gorbachev-1.png" alt="Increment"></button>
+            <button class="btns" id="save-btn"><img src="https://img.icons8.com/dusk/64/000000/save--v1.png" alt="Save"></button>
+            <button class="btns" id = "clear-all"><img src="https://img.icons8.com/external-smashingstocks-circular-smashing-stocks/65/000000/external-dustbin-nature-and-ecology-smashingstocks-circular-smashing-stocks.png" alt="Clear"></button>
+        </div>
+        <div id="textShow">
+            <h3 id="storing_entries">History:</h3>
+            <h3 id = "total_text">Total : <span id="total_count">0</span></h3>
+            <script type="text/javascript">
+                // writing a function to increment the counter
+                // Assigning html counter to a variable
+                const counter = document.getElementById('counter')
+                const incrementor = document.getElementById("increment-btn")
+                const saveBtn = document.getElementById('save-btn')
+                const store = document.getElementById("storing_entries")
+                const total  = document.getElementById("total_count")
+                const clearBtn = document.getElementById('clear-all')
+
+                let count = 0
+                let total_value = 0
+
+
+                incrementor.onclick = () => {
+                    count += 1
+                    counter.innerText = count
+                    total_value += 1
+                }
+
+                saveBtn.onclick = () => {
+                    const entry = count
+                    let adding = entry + ' - '
+                    store.textContent += adding
+                    total.innerText = total_value
+                    counter.innerText =  0
+                    count = 0
+                }
+
+                clearBtn.onclick = () =>{
+                    store.innerHTML = "History: "
+                    total.textContent = 0
+                    total_value = 0
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>

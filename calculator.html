@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            font-family: 'M PLUS Rounded 1c', Avenir Next, Helvetica, sans-serif;
+            color: white;
+        }
+        .wrapper{
+            height: 400px;
+            width: 360px;
+            color: white;
+            background: #272639;
+            border-radius: 1rem;
+            padding: 1.2rem;
+            margin: 100px auto;
+        }
+        #inputArea {
+            margin-top: 1.4rem;
+        }
+        #main-Heading {
+            font-weight: bold;
+            margin-bottom: 4rem;
+        }
+        #inputArea {
+            background: #353959;
+            border-radius: 1.4rem;
+            padding: 0 0.8rem;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        #inputEquation{
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            outline: none;
+            padding: none;
+            column-span: 2;
+            width: 325px;
+            margin: 10px;
+        }
+        #answerDiv{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            justify-content: space-between;
+        }
+
+        #result{
+            background: none;
+            border: none;
+            background-color: rgb(11, 12, 9);
+            width:80px;
+            height: 30px;
+            font-size: 1.2rem;
+            border-radius: 1rem;
+            align-items: center;
+        }
+        #clear{
+            background: none;
+            border: none;
+            background-color: rgb(255, 0, 0);
+            width:80px;
+            height: 30px;
+            font-size: 1.2rem;
+            border-radius: 1rem;
+            align-items: center;
+        }
+        #Answer {
+            font-size: 2rem;
+            text-align: center;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper" id="container">
+        <div class="title" id="main-Heading">
+            <h1 id="heading">Calculator</h1>
+        </div>
+        <div id="inputArea">
+            <input type="text" id="inputEquation" placeholder="0" >
+        </div>
+        <div id="answerDiv">
+            <button id="result">result</button>
+            <button id="clear">clear</button>
+        </div>
+        <div id="showAnswer">
+            <h1 id="Answer"></h1>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // calling result btn id 
+        // showing Area id to modify
+        const resultBtn = document.getElementById('result')
+        const showingAnswer = document.getElementById('Answer')
+        
+        // Result function to calculate the answer
+        const clickResult = () =>{
+            const inputValues = document.getElementById('inputEquation')
+            const actualValues = inputValues.value
+            // Condition to check the input field is empty or not
+            if (actualValues == ''){
+                showingAnswer.innerText = "Ah.. ah.. you didn't enter the values yet can you please do it and then press RESULT"
+            }else{
+                const resultVal = eval(actualValues)
+                showingAnswer.innerText = resultVal
+            }
+        }
+        
+        
+        // calling clear btn id
+        const clearBtn = document.getElementById('clear')
+        // Clear function to clear the input field
+        const clickClear = () => {
+            const inputValues = document.getElementById('inputEquation')
+            inputValues.value = null
+        }
+        
+        // Assigning function's to buttons
+        clearBtn.onclick = clickClear
+        resultBtn.onclick = clickResult
+    </script>
+</body>
+</html>

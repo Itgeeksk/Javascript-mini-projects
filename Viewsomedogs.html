@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View some dogs</title>
+    <style>
+        *{
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color:white;
+        }
+        body{
+            margin: 50px;
+            background: rgb(106, 189, 150);
+        }
+        .container{
+            align-items: center;
+        }
+        #top-container {
+            background: #ff6347;
+            text-align: center;
+            border-radius: 15px;
+            width: auto;
+            height: auto;
+            font-size: 1.5rem;
+        }
+
+        #dogButton{
+            height: 100px;
+            width: 100px;
+            font-size: 1.2rem;
+            background:none;
+            border-color:#d2b48c;
+            border-radius: 30px;
+            color: red;
+            align-items: center;
+            margin-left: 850px;
+        }
+        #image{
+            height:500px;
+            width: 700px;
+            border-radius: 12px;
+            background:#4682b4;
+            margin-left: 500px;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div id="top-container">
+            <h1 id="aboutdogs">On this website you can see new dog image on every click. It's from the world largest dog photo collection site dog.ceo <h6>Get a Image of dog by click the dog icon</h6></h1> 
+        </div>
+        <div id="button">
+            <button id="dogButton"><img src="https://img.icons8.com/clouds/100/000000/dog.png" alt="New dog"/></button>
+        </div>
+        <div id="image">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        const imageDiv = document.getElementById('image')
+        const getNewDog = () => {
+            fetch('https://dog.ceo/api/breeds/image/random').then(response => response.json()).then(json => {
+                imageDiv.innerHTML = `<img style="height:500px; width:700px;" src="${json.message}" alt="Dog Images">`
+            }) 
+        }
+        document.getElementById('dogButton').onclick = () => getNewDog()
+    </script>
+</body>
+</html>

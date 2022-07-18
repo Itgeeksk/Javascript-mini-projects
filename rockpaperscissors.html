@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+        font-size: 1.2rem;
+        color: rgb(255, 255, 255);
+        }
+
+        body{
+            background: rgb(0, 0, 0);
+        }
+
+        .wrapper{
+            height: 525px;
+            width: 450px;
+            color: white;
+            background: #272639;
+            border-radius: 1rem;
+            padding: 1.2rem;
+            margin: 100px auto;
+        }
+
+
+        .rps {
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            justify-content: space-between;
+            padding-left: 30px;
+        }
+
+        #resultHere{
+            font-size: 2rem;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .result{
+            display: flex;
+        }
+
+        #top-title {
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .secondContainer{
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result{
+            font-style: italic;
+        }
+
+        #resetbtn{
+            margin-left: 190px;
+        }
+    </style>
+    <title>Rock, Paper and Scissors</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1 id="top-title">Rock, Papers And Scissors</h1>
+        <div id="firstContainer">
+            <div id="options">
+                <button class="rps" id='rock'><img src="https://img.icons8.com/stickers/100/000000/hand-rock-skin-type-1.png"" alt="rock"></button>
+                <button class="rps" id='paper'><img src="https://img.icons8.com/stickers/100/000000/stop-gesture-skin-type-1.png" alt="paper"></button>
+                <button class="rps" id='scissors'><img src="https://img.icons8.com/stickers/100/000000/hand-scissors-skin-type-1.png" alt="scissors"></button>
+            </div>
+        </div>
+        <div class="secondContainer">
+            <div class="result">
+                <h2>Count:</h2>
+                <h2 class="result"id="count">0</h2>
+            </div>
+        </div>
+        <div class="thirdContainer">
+            <div class="reset">
+                <h2 id="resultHere"></h2>
+            </div>
+            <div class="btnrest">
+                <button id="resetbtn"><img src="https://img.icons8.com/external-bearicons-blue-bearicons/64/000000/external-Reset-miscellany-texts-and-badges-bearicons-blue-bearicons.png" alt="Reset"></button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const computerChoice = () => {
+            const list = ['rock','paper','scissors']
+            const choice = Math.floor(Math.random(list) * 3)
+            return list[choice]
+        }
+
+        const compare = (user, comp) =>{
+            if (user === 'scissors' && comp ==='paper' || user === 'paper' && comp ==='rock' || user === 'rock' && comp ==='scissors'){
+                return '🤵 User Wins'
+            } else if (user === comp){
+                return 'Draw'
+            }else{
+                return '🤖 Computer Wins'
+            }
+        }
+        const optionsByClass = document.querySelectorAll('.rps')
+        const result = document.getElementById('resultHere')
+        const counter = document.getElementById('count')
+        let countValue = 0
+
+        // making a function to detect the click and print the result of the games
+        optionsByClass.forEach(option => {
+            option.onclick = () => { 
+                const user = option.id
+                const computer = computerChoice()
+                result.innerText = compare(user, computer)
+                if (result.innerText === '🤵 User Wins'){
+                    countValue++ 
+                    counter.innerText = countValue
+                }if (result.innerText === '🤖 Computer Wins'){
+                    countValue--
+                    counter.innerText = countValue
+                }
+            }
+        })
+
+
+        // Reset function and reset button
+        const resetBtn = () =>{
+            countValue = 0
+            counter.innerText = countValue
+            result.innerText = ''
+        }
+        document.getElementById('resetbtn').onclick = () => resetBtn()
+    </script>
+</body>
+</html>
